@@ -12,7 +12,7 @@ public class Member {
     private String name;
     @Column(nullable = false, unique = true)
     private String email;
-    @Column(nullable = false)
+    @Column(nullable = false, name = "is_active")
     private boolean isActive = true;
     public Member() {}
     public Member(String name, String email, boolean isActive) {
