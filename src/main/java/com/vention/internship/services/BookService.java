@@ -15,6 +15,10 @@ public class BookService {
     @Autowired
     private BookRepository bookRepository;
     private AuthorRepository authorRepository;
+    public BookService(BookRepository bookRepository, AuthorRepository authorRepository) {
+        this.bookRepository = bookRepository;
+        this.authorRepository = authorRepository;
+    }
     public Book create(Book book) {
         Author author = authorRepository.findById(book.getAuthor().getId())
                 .orElseThrow(() -> new NoSuchElementException("Author not found"));

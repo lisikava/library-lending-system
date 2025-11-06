@@ -29,7 +29,7 @@ public class AuthorController {
         return authorService.findById(id);
     }
     @PutMapping("/{id}")
-    public Author updateAuthor(@PathVariable Long id, @RequestBody Author newAuthor) {
+    public Author update(@PathVariable Long id, @RequestBody Author newAuthor) {
         return authorService.update(id, newAuthor);
     }
     @DeleteMapping("/{id}")

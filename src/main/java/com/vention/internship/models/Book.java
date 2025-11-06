@@ -11,24 +11,23 @@ public class Book {
     @Column(nullable = false)
     private String title;
     private String isbn;
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private Author author;
     @Column(name = "total_copies", nullable = false)
     private Integer totalCopies = 1;
     @Column(name = "available_copies", nullable = false)
     private Integer availableCopies = 1;
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Author author;
     public Book() {}
-    public Book(String title, String isbn, Integer totalCopies, Integer availableCopies, Author author) {
+    public Book(String title, String isbn, Author author, Integer totalCopies, Integer availableCopies) {
         this.title = title;
         this.isbn = isbn;
+        this.author = author;
         this.totalCopies = totalCopies;
         this.availableCopies = availableCopies;
-        this.author = author;
     }
     public Book(String title, String isbn, Author author) {
-        this.title = title;
-        this.isbn = isbn;
-        this.author = author;
+        this(title, isbn, author, 1, 1);
     }
     public Long getId() {
         return id;

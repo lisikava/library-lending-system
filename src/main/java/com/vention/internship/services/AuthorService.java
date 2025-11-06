@@ -11,6 +11,9 @@ import java.util.NoSuchElementException;
 public class AuthorService {
     @Autowired
     private AuthorRepository authorRepository;
+    public AuthorService(AuthorRepository authorRepository) {
+        this.authorRepository = authorRepository;
+    }
     public Author create(Author author) {
         return authorRepository.save(author);
     }
