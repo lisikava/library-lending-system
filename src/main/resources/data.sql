@@ -1,4 +1,6 @@
 BEGIN;
+DELETE FROM loans;
+ALTER SEQUENCE loans_id_seq RESTART WITH 1;
 DELETE FROM books;
 ALTER SEQUENCE books_id_seq RESTART WITH 1;
 DELETE FROM authors;
@@ -23,5 +25,7 @@ INSERT INTO members (name, email, is_active) VALUES
     ('Alice Johnson', 'alice@example.com', TRUE),
     ('Bob Smith', 'bob@example.com', TRUE),
     ('Charlie Brown', 'charlie@example.com', TRUE);
+INSERT INTO loans (book_id, member_id, loan_date, due_date, loan_status) VALUES
+    (1, 1, '2024-11-05 15:00:00', '2024-12-05 15:00:00', 'BORROWED');
 COMMIT;
 
